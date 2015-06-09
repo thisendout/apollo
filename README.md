@@ -23,22 +23,15 @@ apollo.New(Middleware1, Middlware2, Middleware3).With(ctx).Then(App)
 
 # Motivation
 
-Given these handlers:
+Given a handler:
 ```
 func HandlerOne(w http.ResponseWriter, r *http.Request) {}
-//FIXME
-func HandlerTwo(h){
-  return func(w http.ResponseWriter, r *http.Request) {
-    h(w, r)
-  }
-}
 ```
 
-We can serve them using the following:
+We can serve it using the following:
 ```
 http.HandleFunc("/one", HandlerOne)
 // or http.Handle("/one", http.HandlerFunc(HandlerOne))
-http.Handle("/two", HandlerTwo)
 ```
 
 However, given a handler that expects a `net/context`:
