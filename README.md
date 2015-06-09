@@ -53,6 +53,6 @@ ctx := context.Background()
 http.Handle("/alpha", withContext(ctx, HandlerAlpha))
 ```
 
-With this pattern, we can build nested middleware/handler calls that can be used with any `net/http` compatible router/mux. However, we can't implement an Alice-style chain because we no longer conform to the http.Handler-chaining interface that Alice expects.
+With this pattern, we can build nested middleware/handler calls that can be used with any `net/http` compatible router/mux. However, we can't use Alice for chaining because we no longer conform to the http.Handler interface that Alice expects.
 
-Apollo enables context-aware middleware and handlers by passing the context through the chain as a required parameter.
+Apollo enables Alice-style chaining of context-aware middleware and handlers.
