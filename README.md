@@ -1,5 +1,6 @@
 Apollo
 ======
+[![GoDoc](https://godoc.org/github.com/cyclopsci/apollo?status.svg)](https://godoc.org/github.com/cyclopsci/apollo)
 
 Apollo is a middleware-chaining helper for Golang web applications using google's `net/context` package.  Apollo is a fork of [Alice](https://github.com/justinas/alice), modified to support passing the `ctx context.Context` param through middleware and HTTP handlers.
 

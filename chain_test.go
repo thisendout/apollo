@@ -1,3 +1,4 @@
+// Apollo provides `net/context`-aware middleware chaining
 package apollo
 
 import (
