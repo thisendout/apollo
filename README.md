@@ -21,6 +21,12 @@ Relevant and influential articles:
 apollo.New(Middleware1, Middlware2, Middleware3).With(ctx).Then(App)
 ```
 
+# Integration with http.Handler middleware
+
+Apollo provides a `Wrap` function to inject normal http.Handler-based middleware into the chain.  The context will skip over the injected middleware and pass unharmed to the next context-aware handler in the chain.
+```
+apollo.New(ContextMW1, apollo.Wrap(NormalMiddlware), ContextMW2).With(ctx).Then(App)
+```
 # Motivation
 
 Given a handler:

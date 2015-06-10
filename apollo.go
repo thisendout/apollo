@@ -16,19 +16,34 @@ func (h HandlerFunc) ServeHTTP(ctx context.Context, w http.ResponseWriter, r *ht
 	h(ctx, w, r)
 }
 
-type AddsContext struct {
+type addsContext struct {
 	ctx     context.Context
 	handler Handler
 }
 
-func (a *AddsContext) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+func (a *addsContext) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	a.handler.ServeHTTP(a.ctx, w, r)
 }
 
-type StripsContext struct {
+type stripsContext struct {
 	handler http.Handler
 }
 
-func (s *StripsContext) ServeHTTP(ctx context.Context, w http.ResponseWriter, r *http.Request) {
+func (s *stripsContext) ServeHTTP(ctx context.Context, w http.ResponseWriter, r *http.Request) {
 	s.handler.ServeHTTP(w, r)
+}
+
+// Wrap allows injection of normal http.Handler middleware into an
+// apollo middleware chain
+// The context will be preserved and passed through intact
+func Wrap(h func(http.Handler) http.Handler) Constructor {
+	return func(next Handler) Handler {
+		return HandlerFunc(func(ctx context.Context, w http.ResponseWriter, r *http.Request) {
+			stubHandler := &addsContext{
+				ctx:     ctx,
+				handler: next,
+			}
+			h(stubHandler).ServeHTTP(w, r)
+		})
+	}
 }

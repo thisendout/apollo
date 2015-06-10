@@ -22,6 +22,13 @@ func handlerContext(ctx context.Context, w http.ResponseWriter, r *http.Request)
 	}
 }
 
+func middleZero(h http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("m0\n"))
+		h.ServeHTTP(w, r)
+	})
+}
+
 func middleOne(h Handler) Handler {
 	return HandlerFunc(func(ctx context.Context, w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("m1\n"))

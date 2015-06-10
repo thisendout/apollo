@@ -81,7 +81,7 @@ func (c Chain) Then(h Handler) http.Handler {
 	if h != nil {
 		final = h
 	} else {
-		final = &StripsContext{
+		final = &stripsContext{
 			handler: http.DefaultServeMux,
 		}
 	}
@@ -90,7 +90,7 @@ func (c Chain) Then(h Handler) http.Handler {
 		final = c.constructors[i](final)
 	}
 
-	adapter := AddsContext{
+	adapter := addsContext{
 		ctx:     c.context,
 		handler: final,
 	}

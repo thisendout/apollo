@@ -127,7 +127,6 @@ func TestWithMultiples(t *testing.T) {
 	assert.Equal(chain.context, ctx)
 }
 
-// Acceptance Tests
 func TestChains(t *testing.T) {
 	assert := assert.New(t)
 	ctx := NewTestContext(context.Background(), 10)
