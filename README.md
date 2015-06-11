@@ -15,6 +15,9 @@ Relevant and influential articles:
  * https://elithrar.github.io/article/map-string-interface/
  * http://www.alexedwards.net/blog/making-and-using-middleware
  * http://laicos.com/writing-handsome-golang-middleware/
+ * http://nicolasmerouze.com/share-values-between-middlewares-context-golang/
+ * https://elithrar.github.io/article/custom-handlers-avoiding-globals/
+ * http://www.jerf.org/iri/post/2929
 
 # Usage
 
