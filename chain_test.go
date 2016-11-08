@@ -54,6 +54,14 @@ func TestThenFuncNil(t *testing.T) {
 	})
 }
 
+func TestPop(t *testing.T) {
+	assert := assert.New(t)
+	chain := New(middleOne, middleTwo)
+	newChain := chain.Pop()
+	assert.Len(chain.constructors, 2)
+	assert.Len(newChain.constructors, 1)
+}
+
 func TestAppend(t *testing.T) {
 	assert := assert.New(t)
 	chain := New(middleOne)
@@ -134,7 +142,7 @@ func TestChains(t *testing.T) {
 	value, _ := FromContext(ctx)
 	assert.Equal(value, 10)
 
-	chain := New(middleOne, middleTwo).With(ctx).ThenFunc(handlerContext)
+	chain := New(middleOne, middleTwo).Pop().Append(middleTwo).With(ctx).ThenFunc(handlerContext)
 
 	ts := httptest.NewServer(chain)
 	defer ts.Close()
@@ -148,3 +156,4 @@ func TestChains(t *testing.T) {
 	assert.Equal(res.StatusCode, 200)
 	assert.Equal(string(body), "m1\nm2\n10\n")
 }
+

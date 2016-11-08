@@ -106,6 +106,19 @@ func (c Chain) Append(constructors ...Constructor) Chain {
 	return newChain.With(c.context)
 }
 
+// Pop pops the last middleware in the chain.
+//
+// Pop returns a new chain, leaving the original one untouched.
+//
+//     stdChain := alice.New(m1, m2)
+//     extChain := stdChain.Pop()
+//     // requests in stdChain go m1 -> m2
+//     // requests in extChain go m1
+func (c Chain) Pop() Chain {
+	newChain := New(c.constructors[:len(c.constructors)-1]...)
+	return newChain.With(c.context)
+}
+
 // With sets the context to be passed to the start of the Chain.
 //
 // The final handler will use the modified context that has passed
