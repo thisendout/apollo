@@ -4,7 +4,7 @@ package apollo
 import (
 	"net/http"
 
-	"golang.org/x/net/context"
+	"context"
 )
 
 // A constructor for a piece of context-aware middleware.
