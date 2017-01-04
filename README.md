@@ -9,16 +9,6 @@ Apollo is meant to chain handler functions with this signature:
 func (context.Context, http.ResponseWriter, *http.Request)
 ```
 
-Relevant and influential articles:
- * https://blog.golang.org/context
- * https://joeshaw.org/net-context-and-http-handler/
- * https://elithrar.github.io/article/map-string-interface/
- * http://www.alexedwards.net/blog/making-and-using-middleware
- * http://laicos.com/writing-handsome-golang-middleware/
- * http://nicolasmerouze.com/share-values-between-middlewares-context-golang/
- * https://elithrar.github.io/article/custom-handlers-avoiding-globals/
- * http://www.jerf.org/iri/post/2929
-
 # Changelog
 
  * v2.0.0 - Pending
@@ -75,4 +65,16 @@ http.Handle("/alpha", withContext(ctx, HandlerAlpha))
 With this pattern, we can build nested middleware/handler calls that can be used with any `net/http` compatible router/mux. However, we can't use Alice for chaining because we no longer conform to the http.Handler interface that Alice expects.
 
 Apollo enables Alice-style chaining of context-aware middleware and handlers.
+
+# Reference
+
+Relevant and influential articles:
+ * https://blog.golang.org/context
+ * https://joeshaw.org/net-context-and-http-handler/
+ * https://elithrar.github.io/article/map-string-interface/
+ * http://www.alexedwards.net/blog/making-and-using-middleware
+ * http://laicos.com/writing-handsome-golang-middleware/
+ * http://nicolasmerouze.com/share-values-between-middlewares-context-golang/
+ * https://elithrar.github.io/article/custom-handlers-avoiding-globals/
+ * http://www.jerf.org/iri/post/2929
 
