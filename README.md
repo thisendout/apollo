@@ -2,7 +2,7 @@ Apollo
 ======
 [![GoDoc](https://godoc.org/github.com/cyclopsci/apollo?status.svg)](https://godoc.org/github.com/cyclopsci/apollo)
 
-Apollo is a middleware-chaining helper for Golang web applications using google's `net/context` package.  Apollo is a fork of [Alice](https://github.com/justinas/alice), modified to support passing the `ctx context.Context` param through middleware and HTTP handlers.
+Apollo is a middleware-chaining helper for Golang web applications using the stdlib `context` package.  Apollo is a fork of [Alice](https://github.com/justinas/alice), modified to support passing the `ctx context.Context` param through middleware and HTTP handlers.
 
 Apollo is meant to chain handler functions with this signature:
 ```go
@@ -19,7 +19,14 @@ Relevant and influential articles:
  * https://elithrar.github.io/article/custom-handlers-avoiding-globals/
  * http://www.jerf.org/iri/post/2929
 
-Apollo was originally hosted at [cyclopsci/apollo](https://github.com/cyclopsci/apollo), which is now a fork of this repo.
+# Changelog
+
+ * v2.0.0 - Pending
+ ** Updated to use stdlib `context` in go 1.7+.  Use v1.0.0 for projects utilizing `golang.org/x/net/context`.
+ ** Repository transferred from [cyclopsci/apollo](https://github.com/cyclopsci/apollo), which is now a fork of this repo.
+
+ * v1.0.0
+ ** Initial release with chaining for golang.org/x/net/context
 
 # Usage
 
