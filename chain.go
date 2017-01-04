@@ -4,7 +4,7 @@ package apollo
 import (
 	"net/http"
 
-	"golang.org/x/net/context"
+	"context"
 )
 
 // A constructor for a piece of context-aware middleware.
@@ -103,6 +103,19 @@ func (c Chain) Append(constructors ...Constructor) Chain {
 	copy(newCons[len(c.constructors):], constructors)
 
 	newChain := New(newCons...)
+	return newChain.With(c.context)
+}
+
+// Pop pops the last middleware in the chain.
+//
+// Pop returns a new chain, leaving the original one untouched.
+//
+//     stdChain := alice.New(m1, m2)
+//     extChain := stdChain.Pop()
+//     // requests in stdChain go m1 -> m2
+//     // requests in extChain go m1
+func (c Chain) Pop() Chain {
+	newChain := New(c.constructors[:len(c.constructors)-1]...)
 	return newChain.With(c.context)
 }
 

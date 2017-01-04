@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"golang.org/x/net/context"
+	"context"
 )
 
 func handlerZero(w http.ResponseWriter, r *http.Request) {

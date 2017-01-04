@@ -4,7 +4,7 @@ package apollo
 import (
 	"net/http"
 
-	"golang.org/x/net/context"
+	"context"
 )
 
 // Handler is a context-aware interface analagous to the `net/http` http.Handler interface
