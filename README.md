@@ -22,11 +22,11 @@ Relevant and influential articles:
 # Changelog
 
  * v2.0.0 - Pending
- ** Updated to use stdlib `context` in go 1.7+.  Use v1.0.0 for projects utilizing `golang.org/x/net/context`.
- ** Repository transferred from [cyclopsci/apollo](https://github.com/cyclopsci/apollo), which is now a fork of this repo.
+  * Updated to use stdlib `context` in go 1.7+.  Use v1.0.0 for projects utilizing `golang.org/x/net/context`.
+  * Repository transferred from [cyclopsci/apollo](https://github.com/cyclopsci/apollo), which is now a fork of this repo.
 
  * v1.0.0
- ** Initial release with chaining for golang.org/x/net/context
+  * Initial release with chaining for golang.org/x/net/context
 
 # Usage
 
