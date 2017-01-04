@@ -19,6 +19,8 @@ Relevant and influential articles:
  * https://elithrar.github.io/article/custom-handlers-avoiding-globals/
  * http://www.jerf.org/iri/post/2929
 
+Apollo was originally hosted at [cyclopsci/apollo](https://github.com/cyclopsci/apollo), which is now a fork of this repo.
+
 # Usage
 
 ```go
@@ -66,3 +68,4 @@ http.Handle("/alpha", withContext(ctx, HandlerAlpha))
 With this pattern, we can build nested middleware/handler calls that can be used with any `net/http` compatible router/mux. However, we can't use Alice for chaining because we no longer conform to the http.Handler interface that Alice expects.
 
 Apollo enables Alice-style chaining of context-aware middleware and handlers.
+
